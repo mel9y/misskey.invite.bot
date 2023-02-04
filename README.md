@@ -1,47 +1,32 @@
-# template.deno.land
+# misskey.invite.bot
 
-Template repository for immediate deployment of Deno projects
+Misskey インスタンスの招待コードを限られたギルドで共有したいときに利用できる Discord Bot
 
----
+Deno で書かれています。
 
-[Install Deno](https://github.com/denoland/deno#install)
+- [ ] 複数のギルドを指定できるようにする
 
-1. Go to [code](https://github.com/m2en/template.deno.land) page
-2. Click on **use this template**
-3. Enjoy coding 🙂
+> **Warning**
+>
+> 招待コードの発行自体は Misskey 側で行っているので `misskey.invite.bot` の責務ではありません。(Misskey API の `api/admin/invite` にリクエストを飛ばして取得しています。)
 
-----
+## Usage
 
-Deno Tasks are like scripts available in `deno task`
+### Docker で起動する
 
-It is the same as `npm run` or something like that.
+1. `cp .env.default .env` で `.env` をコピーする
+2. `.env` に環境変数を設定する
+3. `docker compose up -d` で起動する
 
-```json
-  "tasks": {
-    "start": "deno run src/mod.ts",
-    "dev": "deno run --watch src/mod.ts",
-    "fmt": "deno fmt --watch src/",
-    "fmt:check": "deno fmt --check",
-    "lint": "deno lint",
-    "lint:json": "deno lint --json",
-    "cache": "deno cache deps.ts"
-  }
-```
+### Cloudflare Worker を使用する
 
-- `start`: `deno task start`
-  - Run `src/mod.ts`
-- `dev`: `deno task dev`
-  - Run `src/mod.ts` (Development Mode)
-  - Re-run each time the file is updated
-- `fmt`: `deno task fmt`
-  - Run **deno fmt**
-  - Re-run each time the file is updated
-- `fmt:check`: `deno task fmt:check`
-  - Run **deno fmt** (check mode)
-- `lint`: `deno task lint`
-  - Run **deno lint**
-- `lint:json`: `deno task lint:json`
-  - Run **deno lint** (json mode)
-    - Execution results are output as JSON
-- `cache`: `deno task cache`
-  - Perform dependency caching for deps.ts
+(記述中)
+
+## Environmental variables
+
+| Value | Description |
+| --- | --- |
+| `DISCORD_BOT_TOKEN` | Discord Bot のトークン |
+| `MISSKEY_INSTANCE_DOMAIN` | Misskey のインスタンスのドメイン |
+| `DISCORD_GUILD_ID` | インスタンスの招待コードを共有するギルドのID |
+| `MISSKEY_INSTANCE_TOKEN` | Misskey のインスタンスのアクセストークン |
