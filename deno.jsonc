@@ -26,7 +26,7 @@
     }
   },
   "tasks": {
-    "start": "deno run src/mod.ts",
+    "start": "deno run --allow-read=.env,.env.defaults,.env.example --allow-net=discord.com,gateway.discord.gg --allow-env src/mod.ts",
     "dev": "deno run --watch src/mod.ts",
     "fmt": "deno fmt --watch src/",
     "fmt:check": "deno fmt --check",
